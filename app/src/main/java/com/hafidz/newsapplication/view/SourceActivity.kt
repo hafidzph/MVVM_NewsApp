@@ -9,8 +9,10 @@ import com.hafidz.newsapplication.R
 import com.hafidz.newsapplication.databinding.ActivitySourceBinding
 import com.hafidz.newsapplication.view.adapter.SourceAdapter
 import com.hafidz.newsapplication.viewmodel.SourceViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import javax.xml.transform.Source
 
+@AndroidEntryPoint
 class SourceActivity : AppCompatActivity() {
     var binding: ActivitySourceBinding? = null
     val sourceVM: SourceViewModel by viewModels()

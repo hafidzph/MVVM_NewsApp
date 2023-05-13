@@ -5,19 +5,26 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.hafidz.newsapplication.model.sources.ResponseDataSource
 import com.hafidz.newsapplication.model.sources.Source
 import com.hafidz.newsapplication.network.NetworkClient
+import com.hafidz.newsapplication.network.NetworkService
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class SourceViewModel(private val app: Application): AndroidViewModel(app) {
+@HiltViewModel
+class SourceViewModel @Inject constructor(var api: NetworkService): ViewModel() {
     private val _source = MutableLiveData<List<Source>>()
     val source: LiveData<List<Source>> = _source
 
     fun getAllSource(category: String){
-        NetworkClient.instance.getAllSources(category)
+        api.getAllSources(category)
             .enqueue(object : Callback<ResponseDataSource> {
                 override fun onResponse(
                     call: Call<ResponseDataSource>,

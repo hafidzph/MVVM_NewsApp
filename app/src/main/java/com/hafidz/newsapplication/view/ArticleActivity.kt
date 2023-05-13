@@ -9,7 +9,9 @@ import com.hafidz.newsapplication.R
 import com.hafidz.newsapplication.databinding.ActivityArticleBinding
 import com.hafidz.newsapplication.view.adapter.ArticleAdapter
 import com.hafidz.newsapplication.viewmodel.ArticleViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArticleActivity : AppCompatActivity() {
     private var binding: ActivityArticleBinding? = null
     private val articleVm: ArticleViewModel by viewModels()
